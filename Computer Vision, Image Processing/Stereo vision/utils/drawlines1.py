@@ -1,0 +1,16 @@
+import cv2
+import numpy as np
+
+def drawlines(im_points,pts,im_lines,lines,size=5):
+    im_lines_out = np.copy(im_lines)
+    im_points_out = np.copy(im_points)
+
+    lines = lines.reshape(-1,3)
+    _,c = im_lines_out.shape[:2]
+    for r,ptr in zip(lines,pts):
+        color = tuple(np.random.randint(0,255,3).tolist())
+        x0,y0 = map(int, [0, -r[2]/r[1] ])
+        x1,y1 = map(int, [c, -(r[2]+r[0]*c)/r[1] ])
+        im_lines_out = cv2.line(im_lines_out, (x0,y0), (x1,y1), color,size)
+        im_points_out = cv2.circle(im_points_out,tuple(ptr),8*size,color,-1)
+    return im_lines_out, im_points_out
