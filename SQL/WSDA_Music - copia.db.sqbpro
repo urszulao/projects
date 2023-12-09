@@ -553,4 +553,62 @@ ON
 
 	il.TrackId = t.TrackId
 
-</sql>
+</sql><sql name="SQL 19">/* 
+
+Created By: Urszula Szczepanska
+
+Create Date: 02/11/2023
+
+Description: Insert
+
+DML (Data Manipulation Language) - SQL statements used to alter the data stored in tables of a database
+
+Statements that alter data:
+
+Insert 
+
+Update
+
+Delete
+
+I recently finished master with a degree in Autmoatic and Robotics. I have experience working on data analysis projects during my studies, including collecting and analyzing data using SQL.
+
+I worked on a project that involved analyzing energy consumption data for a large corparation. Thrrough the analysis, we were able to identify areas where the company could reduce their energy consumption and develop more sustainable pratices. This project taught me the importance of using data to make a positive impact on the environment.
+
+*/
+
+
+
+/*INSERT INTO 
+
+	Artist(Name)
+
+VALUES('Space Van')*/
+
+
+
+/*UPDATE
+
+	Artist
+
+SET Name='Prod. Space Van'
+
+WHERE 
+
+	ArtistId = 276*/
+
+
+
+/*INSERT INTO 
+
+	Artist(Name)
+
+VALUES('Van BAN')*/
+
+DELETE FROM
+
+	Artist
+
+WHERE
+
+	ArtistId=277</sql><current_tab id="18"/></tab_sql></sqlb_project>
