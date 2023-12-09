@@ -182,4 +182,66 @@ ON
 ORDER BY
 	I.total DESC
 LIMIT 10
+</sql><sql name="SQL8">/*
+Created by: Urszula Szczepanska
+Created date: 27/10/2023
+Descripton: Create a Mailing List of US Customers
+*/
+
+SELECT
+	LastName,
+	FirstName,
+	Address,
+	FirstName ||' '|| LastName ||' '||  Address ||' , '|| City ||' '||  State ||' '||  PostalCode AS [Mailing Adress],
+	length(PostalCode),
+	SUBSTR(PostalCode, 1,5) AS [5 Digit Postal Code],
+
+	UPPER(firstname) AS [First Name All caps],
+
+	LOWER(LastName) AS [Last Name All Lower]
+FROM
+	Customer 
+WHERE
+	Country = 'USA'
+
+</sql><sql name="SQL9">/*
+Created by: Urszula Szczepanska
+Created date: 2/11/2023
+Descripton: Calculate the ages of all Employees
+*/
+
+SELECT
+	LastName,
+	FirstName,
+	BirthDate,
+
+	strftime('%Y-%m-%d',Birthdate) AS [BirthDate no TImecode],
+
+	strftime('%Y-%m-%d','now') - strftime('%Y-%m-%d',Birthdate) AS Age
+FROM
+	Employee 
+
+</sql><sql name="SQL10">/*
+Created by: Urszula Szczepanska
+Created date: 2/11/2023
+Descripton: Aggregate Function | What are our all time global sales?
+
+Nesting Function - A function contained within another function  EXAMPLE FROG from ParkFrog in the field text0 will be UPPER(substr(text05,4))
+
+Nested QUERY - A query wrapped inside of another query
+*/
+
+SELECT
+	SUM(total) AS [Total Sales],
+
+	round(AVG(total),2) AS [Average Sales],
+
+	MAX(total) AS [Maximmum Sales],
+
+	MIN(total) AS [Miniumum Sales],
+
+	COUNT(*) AS [Sales Count]
+FROM
+	Invoice
+
 </sql>
