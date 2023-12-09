@@ -244,4 +244,48 @@ SELECT
 FROM
 	Invoice
 
+</sql><sql name="SQL11">/*
+Created by: Urszula Szczepanska
+Created date: 2/11/2023
+Descripton: Grouping in SQL | What are the average invoice totals by city?
+
+Descripton: Grouping in SQL | What are the average invoice totals by city FOR ONLY THE CITIES THAT START WITH L? WEHERE Clause for filtering non aggregate data
+
+Descripton: Grouping in SQL | What are the average invoice totals greater then $5?.00?  HAVING Clause for filtering results containing aggregate data
+
+Descripton: Grouping in SQL | What are the average invoice totals greater then $5?.00 FOR CITIES STARTING WITH B?
+
+Descripton: Grouping by more than one field at the time in SQL | What are the average invoice by billing country and city totals greater then $6?.00 ?
+*/
+
+
+
+SELECT
+
+	BillingCountry,
+
+	BillingCity,
+
+	round(AVG(TOTAL),2)	AS [AVERAGE TOTAL]
+
+FROM
+
+	Invoice
+
+--WHERE
+
+--	BillingCity LIKE'L%'
+
+GROUP BY
+
+	BillingCountry, BillingCity
+
+HAVING 
+
+	avg(total)&gt;6
+
+ORDER BY
+
+	BillingCountry
+
 </sql>
