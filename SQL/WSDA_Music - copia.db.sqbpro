@@ -288,4 +288,195 @@ ORDER BY
 
 	BillingCountry
 
+</sql><sql name="SQL12">/*
+Created by: Urszula Szczepanska
+Created date: 2/11/2023
+
+Descripton: Subquery | Gather data about all invoices that are less than this average? Outer Query - Inner Query [(select AVG(total) from Invoice)] - Outer Query
+*/
+
+
+
+
+
+SELECT
+
+	InvoiceDate,
+
+	BillingAddress,
+
+	BillingCity,
+
+	total
+
+FROM
+
+	Invoice
+
+WHERE
+
+	total &lt;
+
+		(select AVG(total) from Invoice)
+
+ORDER BY
+
+	total DESC</sql><sql name="SQL 13">/* 
+
+Created By: Urszula Szczepanska
+
+Create Date: 02/1122023
+
+Description: Subqueries in the SELECT |♥ How is each individual city performin against the global average sales?
+
+*/
+
+
+
+SELECT
+
+	BillingCity,
+
+	round(AVG(total),2) AS [City Average],
+
+	(select round(AVG(total),2) from Invoice) AS [Global Average]
+
+FROM
+
+	Invoice
+
+Group BY 
+
+	BillingCity
+
+ORDER BY
+
+	BillingCity
+
+</sql><sql name="SQL 14">/* 
+
+Created By: Urszula Szczepanska
+
+Create Date: 02/1122023
+
+Description: Subqueries without Agregate function
+
+*/
+
+
+
+SELECT
+
+	InvoiceDate,
+
+	BillingAddress,
+
+	BillingCity
+
+FROM
+
+	Invoice
+
+WHERE
+
+	InvoiceDate &gt;
+
+(SELECT
+
+	InvoiceDate
+
+FROM
+
+	Invoice
+
+WHERE
+
+	InvoiceId = 251)
+
+
+
+</sql><sql name="SQL 15">/* 
+
+Created By: Urszula Szczepanska
+
+Create Date: 02/1122023
+
+Description: Returning multiple vaues from a subquery
+
+*/
+
+
+
+SELECT
+
+	InvoiceDate,
+
+	BillingAddress,
+
+	BillingCity
+
+FROM
+
+	Invoice
+
+WHERE
+
+	InvoiceDate IN 
+
+(SELECT
+
+	InvoiceDate
+
+FROM
+
+	Invoice
+
+WHERE
+
+	InvoiceId IN (251, 252, 254))
+
+
+
+</sql><sql name="SQL 16">/* 
+
+Created By: Urszula Szczepanska
+
+Create Date: 02/1122023
+
+Description: Subqueries and DISTINCT | Whichtracks are not selling
+
+*/
+
+SELECT
+
+	TrackId,
+
+	Composer,
+
+	Name
+
+FROM 
+
+	Track
+
+WHERE
+
+	TrackId
+
+NOT IN
+
+(SELECT	
+
+	DISTINCT
+
+	TrackId
+
+FROM
+
+	InvoiceLine
+
+ORDER BY 
+
+	TrackId)
+
 </sql>
