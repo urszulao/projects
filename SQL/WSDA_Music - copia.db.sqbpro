@@ -93,4 +93,93 @@ WHERE
 	PurchaseType='TOP Performer'
 ORDER BY
 	InvoiceDate
+</sql><sql name="SQL 5">/*
+Created by: Urszula Szczepanska
+Created date: 27/10/2023
+Descripton: JOINS
+*/
+-- The star symbol, or asterisk (*), returns all columns
+
+SELECT
+	C.LastName,
+	C.FirstName,
+	I.InvoiceId,
+	I.CustomerId,
+	I.InvoiceDate,
+	I.total
+FROM
+	Invoice AS I
+INNER JOIN
+	Customer AS C
+ON
+	I.CustomerId = C.CustomerId
+ORDER BY 
+	C.CustomerId
+/*WHERE
+	PurchaseType='TOP Performer'
+ORDER BY
+	InvoiceDate
+*/</sql><sql name="SQL 6">/*
+Created by: Urszula Szczepanska
+Created date: 27/10/2023
+Descripton: JOINS
+*/
+-- The star symbol, or asterisk (*), returns all columns
+
+SELECT
+	C.LastName,
+	C.FirstName,
+	I.InvoiceId,
+	I.CustomerId,
+	I.InvoiceDate,
+	I.total
+FROM
+	Invoice AS I
+LEFT OUTER JOIN
+	Customer AS C
+ON
+	I.CustomerId = C.CustomerId
+/*
+SELECT
+	C.LastName,
+	C.FirstName,
+	I.InvoiceId,
+	I.CustomerId,
+	I.InvoiceDate,
+	I.total
+FROM
+	Customer AS C
+LEFT OUTER JOIN
+	Invoice AS I
+ON
+	C.CustomerId = I.CustomerId
+*/</sql><sql name="SQL7">/*
+Created by: Urszula Szczepanska
+Created date: 27/10/2023
+Descripton: JOINS on the more tham two tables | What employees are responsible for the 10 heighest individual sales?
+*/
+
+SELECT
+	C.LastName,
+	C.FirstName,
+	C.SupportRepId,
+	I.CustomerId,
+	I.total,
+	E.EmployeeId,
+	E.LastName,
+	E.FirstName
+
+FROM
+	Invoice AS I
+INNER JOIN
+	Customer AS C
+ON
+	I.CustomerId = C.CustomerId
+INNER JOIN
+	Employee AS E
+ON 
+	C.SupportRepId = E.EmployeeId
+ORDER BY
+	I.total DESC
+LIMIT 10
 </sql>
