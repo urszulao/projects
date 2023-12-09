@@ -479,4 +479,78 @@ ORDER BY
 
 	TrackId)
 
+</sql><sql name="SQL 17">/* 
+
+Created By: Urszula Szczepanska
+
+Create Date: 02/1122023
+
+Description: Views
+
+View - An SQL query that is saved abd can be executed reapeatedly or referenced by other queries  (virtual table)
+
+to delate a VIEW : 
+
+DROP VIEW
+
+	V_AvgTotal
+
+*/
+
+
+
+
+
+CREATE VIEW V_AvgTotal AS 
+
+SELECT
+
+	round(AVG(TOTAL),2)	AS [AVERAGE TOTAL]
+
+FROM 
+
+	Invoice
+
+</sql><sql name="SQL 18">/* 
+
+Created By: Urszula Szczepanska
+
+Create Date: 02/1122023
+
+Description: Views and Joins
+
+*/
+
+
+
+
+
+CREATE VIEW V_Tracks_InvoicesLine AS 
+
+SELECT
+
+	il.InvoiceId,
+
+	il.UnitPrice,
+
+	il.Quantity,
+
+	t.Name,
+
+	t.Composer, 
+
+	t.Milliseconds
+
+FROM 
+
+	InvoiceLine il
+
+INNER JOIN
+
+	Track t
+
+ON 
+
+	il.TrackId = t.TrackId
+
 </sql>
