@@ -3,10 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if k == 0:
-            return nums
-        if len(nums) == 0:
-            return []
         if len(nums) < k:
             k = k % len(nums)
         k_last_ele = nums[-k:]       
