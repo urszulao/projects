@@ -3,5 +3,12 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        for i in range(k):
-            nums.insert(0,nums.pop())  
+        if k == 0:
+            return nums
+        if len(nums) == 0:
+            return []
+        if len(nums) < k:
+            k = k % len(nums)
+        k_last_ele = nums[-k:]       
+        nums[k:] = nums[:-k]
+        nums[:k] = k_last_ele
